@@ -79,7 +79,7 @@ def train_model(args, model, criterion, optimizer, scheduler, num_epochs, datase
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects.double() / dataset_sizes[phase]
 
-            if epoch == 0:
+            if epoch == 0 and os.path.exists('result.txt'):
                 os.remove('result.txt')
             with open('result.txt', 'a') as f:
                 f.write('Epoch:{}/{} {} Loss: {:.4f} Acc: {:.4f} \n'.format(epoch + 1, num_epochs, phase, epoch_loss, epoch_acc))
